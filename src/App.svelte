@@ -1,10 +1,13 @@
 <script lang="ts">
   import Button from './bits/Button.svelte'
+  import * as api from './api'
 
   let sending = false
 
   function sendTX(){
-    sending = !sending
+    sending = true
+    setTimeout(()=>sending=false,2000)
+    api.sendTransfer()
   }
 </script>
 

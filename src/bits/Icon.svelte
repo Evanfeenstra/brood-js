@@ -6,8 +6,6 @@
   export let color: string = "white";
   export let style: string = ""
 
-  $: console.log(name)
-
   interface Path {
     d:string
     fill?:string
@@ -74,3 +72,4 @@
     <path d={path.d} fill={path.fill || 'none'} />
   {/each}
 </svg>
+

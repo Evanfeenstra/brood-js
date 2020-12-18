@@ -10,7 +10,7 @@
     font-family: Avenir, Arial, Helvetica, sans-serif;
     padding:11px 16px 9px 16px;
     border-radius: 6px;
-    font-size: 18px;
+    font-size: 16px;
     border: 1px solid white;
     outline: none;
     display: flex;
