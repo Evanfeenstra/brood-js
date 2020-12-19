@@ -16,9 +16,21 @@ input {
 	outline: none;
 	border: none;
 	border-bottom: 1px solid grey;
+	font-size: 15px;
+	color: white;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 input:focus{
 	border-bottom: 1px solid white;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+input[type=number] {
+	-moz-appearance: textfield;
 }
 *[visibility="hidden"] {
 	visibility: hidden !important;

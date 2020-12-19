@@ -1,27 +1,42 @@
 <script lang="ts">
-  import Button from './bits/Button.svelte'
-  import * as api from './api'
-
-  let sending = false
-
-  function sendTX(){
-    sending = true
-    setTimeout(()=>sending=false,2000)
-    api.sendTransfer()
-  }
+  import Grid from './bits/Grid.svelte'
+  import Sidebar from './views/Sidebar.svelte'
+  import Content from './views/Content.svelte'
+  import {initialized} from './store'
 </script>
 
 <style>
+  :root {
+    --primary: #f5f5f5;
+    --headheight: 56px;
+    --bodyheight: calc(100% - 57px);
+    --sidewidth: 280px;
+    --mainwidth: calc(100vw - 280px);
+  }
   main {
     display:flex;
     flex:1;
     align-items: center;
     justify-content: center;
+    height: calc(100% - 1px);
+    position: relative;
+  }
+  section {
+    position: relative;
+    z-index: 100;
+    display:flex;
+    flex:1;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
 </style>
 
 <main>
-  <Button icon={sending?'loading':'send'} on:click={sendTX}>
-    Send Transaction
-  </Button>
+  <Grid onDone={()=>initialized.set(true)} />
+  
+  <section>
+    <Sidebar />
+    <Content />
+  </section>
 </main>

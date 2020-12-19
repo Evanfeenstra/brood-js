@@ -1,4 +1,4 @@
-<svg
+<svg style="transform:rotate(180deg);"
     class="logo"
     stroke="white"
     width="32"

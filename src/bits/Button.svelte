@@ -3,6 +3,7 @@
   import type {IconName} from '../types'
 
   export let icon:IconName|'' = ''
+  export let disabled:boolean = false
 </script>
 
 <style>
@@ -56,10 +57,10 @@
   }
 </style>
 
-<button on:click>
+<button on:click {disabled}>
   {#if icon}
     <div class="icon-wrap">
-      <Icon name={icon} size={17} />
+      <Icon name={icon} size={17} color={disabled?'grey':'white'}/>
     </div>
   {/if}
   <slot />
