@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type {IconName} from '../types'
   import {names} from './icons'
+  import type {IconName} from './icons'
 
   export let name: IconName = "plus";
   export let size: number = 24;
@@ -26,8 +26,10 @@
   viewBox={vb||"0 0 24 24"}
   class={className}
   fill="none">
-  {#each paths as path}
-    <path d={path.d} fill={color || path.fill || 'none'} />
+  {#each paths as p}
+    {#if p.type==='rect'}
+      <rect x={p.params.x} y={p.params.y} rx={p.params.rx} height={p.params.height} width={p.params.width} fill={color || p.fill || 'none'} />
+    {/if}
+    <path d={p.d} fill={color || p.fill || 'none'} />
   {/each}
 </svg>
-

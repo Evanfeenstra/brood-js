@@ -35,32 +35,33 @@ export function totalLength() {
 export function makeLines(l:number=0): Line[] {
   const points = makePoints()
   const lines: Line[] = [];
+  // beginning of currently animated line
   let place = 0
   points.forEach((p, i) => {
     if (i === points.length - 1) return;
     if (l < place) return
     const next = points[i + 1];
-    const length = len(p,next)
+    const length = len(p,next) // length of this line
     place += length
     lines.push(partLine(p,next,place,l))
   });
   return lines
 }
 
-function partLine(p,next,length,l):Line {
+function partLine(p,next,place,l):Line {
   let [x1,y1] = p
   let [x2,y2] = next
   if(y1>y2){ // up
-    y2 = Math.max(next[1], next[1] + length - l);
+    y2 = Math.max(next[1], next[1] + place - l);
   }
   if(y1<y2) { // down
-    y2 = Math.min(next[1], next[1] - length + l);
+    y2 = Math.min(next[1], next[1] - place + l);
   }
   if(x1>x2) { // left
-    x2 = Math.max(next[0], next[0] + length - l);
+    x2 = Math.max(next[0], next[0] + place - l);
   }
   if(x1<x2) { // right
-    x2 = Math.min(next[0], next[0] - length + l);
+    x2 = Math.min(next[0], next[0] - place + l);
   }
   return {x1,y1,x2,y2}
 }

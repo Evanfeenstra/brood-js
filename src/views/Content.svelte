@@ -1,7 +1,8 @@
 <script lang="ts">  
   import Coin from '../views/Coin.svelte'
-  import {initialized} from '../store'
+  import {connected, initialized} from '../store'
   import {fade} from 'svelte/transition'
+  import Connect from './Connect.svelte'
 </script>
 
 <style>
@@ -33,7 +34,11 @@
 
 {#if $initialized}
   <main transition:fade={{duration:100}}>
-    <header></header>
+    <header>
+      {#if $connected}
+        <Connect />
+      {/if}
+    </header>
     <section>
       <Coin coin={{name:'IOTA',balance:100}} />
     </section> 

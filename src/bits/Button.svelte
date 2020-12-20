@@ -1,25 +1,26 @@
 <script lang="ts">
   import Icon from './Icon.svelte'
-  import type {IconName} from '../types'
+  import type {IconName} from './icons'
 
-  export let icon:IconName|'' = ''
-  export let disabled:boolean = false
+  export let width: string = "auto"
+  export let icon:IconName|'' = '';
+  export let disabled:boolean = false;
+  
 </script>
 
 <style>
   button {
+    height: 40px;
     font-family: Avenir, Arial, Helvetica, sans-serif;
     padding:11px 16px 9px 16px;
     border-radius: 6px;
     font-size: 16px;
     border: 1px solid white;
     outline: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: transparent;
     color: white;
     cursor: pointer;
+    position: relative;
   }
   button:hover {
     border: 2px solid white;
@@ -55,13 +56,22 @@
     display:flex;
     align-items: center;
   }
+  section {
+    position:absolute;
+    top:0px;left:0px;right:0px;bottom:0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 </style>
 
-<button on:click {disabled}>
-  {#if icon}
-    <div class="icon-wrap">
-      <Icon name={icon} size={17} color={disabled?'grey':'white'}/>
-    </div>
-  {/if}
-  <slot />
+<button on:click {disabled} style="width:{width}px;">
+  <section>
+    {#if icon}
+      <div class="icon-wrap">
+        <Icon name={icon} size={17} color={disabled?'grey':'white'}/>
+      </div>
+    {/if}
+    <slot />
+  </section>
 </button>

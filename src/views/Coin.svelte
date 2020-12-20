@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { Coin } from "../types";
-  import Button from "../bits/Button.svelte";
-  import * as api from "../api";
+  import type { Coin } from "../types"
+  import Button from "../bits/Button.svelte"
+  import * as api from "../api"
   import {validAmount} from './coin'
 
   export let coin: Coin;
@@ -48,11 +48,9 @@
     margin-top: 62px;
   }
   .send-input {
-    height: 42px;
     width: 200px;
   }
   .amount-input {
-    height: 42px;
     width: 96px;
     margin: 0 10px;
   }
@@ -76,7 +74,7 @@
         bind:value={amount}
         on:input={amountInput}
       />
-      <Button icon={sending ? 'loading' : 'send'} 
+      <Button icon={sending ? 'loading' : 'send'} width="100"
         on:click={sendTX} disabled={!amount || !address}>
         Send
       </Button>
