@@ -15,7 +15,7 @@
       disconnected: function(e) {
         connected.set(false)
       }
-    });
+    }, true);
   }
 
   onMount(() => {

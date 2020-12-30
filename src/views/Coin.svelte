@@ -2,22 +2,27 @@
   import type { Coin } from "../types"
   import Button from "../bits/Button.svelte"
   import * as api from "../api"
-  import {validAmount} from './coin'
+  import Input from '../bits/Input.svelte'
 
   export let coin: Coin;
 
   let sending = false;
-  let address = ''
+  let address = '127NVqnjf8gB9BFAW2dnQeM6wqmy1gbGtv'
   let amount = ''
 
   function sendTX() {
     sending = true;
     setTimeout(() => (sending = false), 2000);
-    api.sendTransfer();
+    api.sendTransfer({
+      address,
+      amount: parseInt(amount)
+    });
   }
 
-  function amountInput(e){
-    amount = validAmount(e.target.value, coin.balance)
+  function validAmount(v) {
+    const i = parseInt(v)
+    if(i > coin.balance) return false
+    return i || i===0 ? i + '' : ''
   }
 </script>
 
@@ -45,14 +50,16 @@
   }
   .send {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 62px;
+    width: 280px;
   }
-  .send-input {
-    width: 200px;
-  }
-  .amount-input {
-    width: 96px;
-    margin: 0 10px;
+  .lower{
+    display: flex;
+    align-items: center;
+    margin-top:20px;
+    width:100%;
   }
 </style>
 
@@ -64,20 +71,24 @@
 
     <div class="balance">Balance: <b>{coin.balance}</b></div>
 
-    <div class="send">
-      <input class="send-input"
-        placeholder="Address"
+    <section class="send">
+      
+      <Input placeholder="Address"
         bind:value={address}
+        style={{width:'100%'}}
       />
-      <input class="amount-input" 
-        placeholder="Amount"
-        bind:value={amount}
-        on:input={amountInput}
-      />
-      <Button icon={sending ? 'loading' : 'send'} width="100"
-        on:click={sendTX} disabled={!amount || !address}>
-        Send
-      </Button>
-    </div>
+      <div class="lower">
+        <Input placeholder="Amount"
+          bind:value={amount}
+          validate={validAmount}
+          style={{marginRight:18}}
+        />
+        <Button icon={sending ? 'loading' : 'send'} style={{width:100}}
+          on:click={sendTX} disabled={!amount || !address}>
+          Send
+        </Button>
+      </div>
+
+    </section>
   </main>
 {/if}

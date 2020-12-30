@@ -1,10 +1,11 @@
 <script lang="ts">
   import Icon from './Icon.svelte'
   import type {IconName} from './icons'
+  import {css} from './utils'
 
-  export let width: string = "auto"
   export let icon:IconName|'' = '';
   export let disabled:boolean = false;
+  export let style:{[k:string]:any} = {}
   
 </script>
 
@@ -65,7 +66,7 @@
   }
 </style>
 
-<button on:click {disabled} style="width:{width}px;">
+<button on:click {disabled} style={css(style)}>
   <section>
     {#if icon}
       <div class="icon-wrap">

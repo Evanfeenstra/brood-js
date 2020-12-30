@@ -16,31 +16,6 @@ pre{
 	-webkit-user-select: text;
 	cursor: text;
 }
-input {
-	height: 40px;
-	user-select: text;
-	-webkit-user-select: text;
-	cursor: text;
-	background: transparent;
-	outline: none;
-	border: none;
-	border-bottom: 1px solid grey;
-	font-size: 15px;
-	color: white;
-	text-overflow: ellipsis;
-	overflow: hidden;
-}
-input:focus{
-	border-bottom: 1px solid white;
-}
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
-}
-input[type=number] {
-	-moz-appearance: textfield;
-}
 *[visibility="hidden"] {
 	visibility: hidden !important;
 	user-select: none !important;
@@ -49,7 +24,7 @@ input[type=number] {
 	display: none !important;
 	user-select: none !important;
 }
-html,body,main.wrapper{
+html,body{
 	display:flex;
 	flex:1;
 	height:100%;
@@ -65,26 +40,6 @@ body {
 	background: linear-gradient(135deg, #00646d 4%, #411cce);
 	background-size: cover;
 }
-input:focus::placeholder {
-	color: #aaa;
-}
-@keyframes spin {
-	from {
-		transform:rotate(0deg);
-	}
-	to {
-		transform:rotate(360deg);
-	}
-}
-.loading{
-	height:18px;
-	width:18px;
-	animation-name: spin;
-	animation-duration: 600ms;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear; 
-}
-
   
 /* @font-face{ 
 	font-family: 'Avenir';

@@ -40,7 +40,7 @@
       {/if}
     </header>
     <section>
-      <Coin coin={{name:'IOTA',balance:100}} />
+      <Coin coin={{name:'IOTA',balance:186624}} />
     </section> 
   </main>
 {/if}
