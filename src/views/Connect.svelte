@@ -1,6 +1,13 @@
 <script lang="ts">
   import Icon from '../bits/Icon.svelte'
   import {fade} from 'svelte/transition'
+  import * as api from "../api"
+
+  async function getAccounts(){
+    console.log("GET ACCOU?NTS")
+    const r = await api.getAccounts();
+    console.log(r)
+  }
 </script>
 
 <style>
@@ -18,5 +25,5 @@
 
 <main transition:fade={{duration:150}}>
   <Icon name="compute" size={14} />
-  <span>CONNECTED</span>
+  <span on:click={getAccounts}>CONNECTED</span>
 </main>

@@ -4,7 +4,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public --port=5001",
+    "start": "sirv public --port=5002",
     "validate": "svelte-check"
   },
   "devDependencies": {
@@ -24,7 +24,7 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
-    "glow-js": "file:./../glow-js",
+    "glow-js": "file:../glow/glow.js",
     "sirv-cli": "^1.0.0"
   }
 }

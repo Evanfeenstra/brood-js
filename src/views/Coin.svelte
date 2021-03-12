@@ -10,13 +10,13 @@
   let address = '127NVqnjf8gB9BFAW2dnQeM6wqmy1gbGtv'
   let amount = ''
 
-  function sendTX() {
+  async function sendTX() {
     sending = true;
-    setTimeout(() => (sending = false), 2000);
-    api.sendTransfer({
+    await api.send({
       address,
       amount: parseInt(amount)
     });
+    sending = false
   }
 
   function validAmount(v) {
