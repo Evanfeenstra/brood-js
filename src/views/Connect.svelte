@@ -7,6 +7,11 @@
     console.log("GET ACCOU?NTS")
     const r = await api.getAccounts();
     console.log(r)
+    if(r.payload && r.payload[0]) {
+      const first = r.payload[0]
+      alert(JSON.stringify(first, null, 2))
+    }
+    
   }
 </script>
 
