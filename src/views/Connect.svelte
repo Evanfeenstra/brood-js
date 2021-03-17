@@ -2,14 +2,15 @@
   import Icon from '../bits/Icon.svelte'
   import {fade} from 'svelte/transition'
   import * as api from "../api"
+  import * as store from '../store'
 
   async function getAccounts(){
-    console.log("GET ACCOU?NTS")
     const r = await api.getAccounts();
     console.log(r)
     if(r.payload && r.payload[0]) {
       const first = r.payload[0]
-      alert(JSON.stringify(first, null, 2))
+      // alert(JSON.stringify(first, null, 2))
+      store.account.set(first)
     }
     
   }

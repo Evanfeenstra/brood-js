@@ -3,6 +3,19 @@
   import Button from "../bits/Button.svelte"
   import * as api from "../api"
   import Input from '../bits/Input.svelte'
+  import {account} from '../store'
+  import { derived } from 'svelte/store'
+
+  let balance = 0
+  account.subscribe(a=>{
+    if(a && a.addresses && a.addresses.length) {
+      balance = a.addresses.reduce((total,addy)=>{
+        return total + addy.balance
+      }, 0)
+    }
+  })
+
+  $: miota = balance ? (balance/1000000)+' MI' : ''
 
   export let coin: Coin;
 
@@ -69,7 +82,9 @@
       <div class="name">{coin.name}</div>
     </div>
 
-    <div class="balance">Balance: <b>{coin.balance}</b></div>
+    {#if miota}
+      <div class="balance">Balance: <b>{miota}</b></div>
+    {/if}
 
     <section class="send">
       
