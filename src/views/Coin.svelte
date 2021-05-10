@@ -6,6 +6,8 @@
   import {account} from '../store'
   import { derived } from 'svelte/store'
 
+  export let getAccounts = () => {}
+
   let balance = 0
   account.subscribe(a=>{
     if(a && a.addresses && a.addresses.length) {
@@ -25,16 +27,20 @@
 
   async function sendTX() {
     sending = true;
-    await api.send({
+    const rr = await api.send({
       address,
       amount: parseInt(amount)
     });
+    console.log("SEND REPSONSE", rr)
     sending = false
+    amount = ''
+    // getAccounts()
   }
 
   function validAmount(v) {
     const i = parseInt(v)
-    if(i > coin.balance) return false
+    console.log(i, balance)
+    if(i > balance) return false
     return i || i===0 ? i + '' : ''
   }
 </script>

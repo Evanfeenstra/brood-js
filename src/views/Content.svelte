@@ -3,6 +3,19 @@
   import {connected, initialized} from '../store'
   import {fade} from 'svelte/transition'
   import Connect from './Connect.svelte'
+
+  import * as api from "../api"
+  import * as store from '../store'
+
+  async function getAccounts(){
+    const r = await api.getAccounts();
+    console.log(r)
+    if(r.payload && r.payload[0]) {
+      const first = r.payload[0]
+      // alert(JSON.stringify(first, null, 2))
+      store.account.set(first)
+    }
+  }
 </script>
 
 <style>
@@ -36,11 +49,11 @@
   <main transition:fade={{duration:100}}>
     <header>
       {#if $connected}
-        <Connect />
+        <Connect getAccounts={getAccounts} />
       {/if}
     </header>
     <section>
-      <Coin coin={{name:'IOTA',balance:186624}} />
+      <Coin coin={{name:'IOTA',balance:186624}} getAccounts={getAccounts} />
     </section> 
   </main>
 {/if}

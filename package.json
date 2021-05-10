@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "glow-js": "file:../glow/glow.js",
+    "glow.js": "^0.2.1",
     "sirv-cli": "^1.0.0"
   }
 }

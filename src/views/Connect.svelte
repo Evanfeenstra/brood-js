@@ -1,19 +1,9 @@
 <script lang="ts">
   import Icon from '../bits/Icon.svelte'
   import {fade} from 'svelte/transition'
-  import * as api from "../api"
-  import * as store from '../store'
+  
+  export let getAccounts = () => {}
 
-  async function getAccounts(){
-    const r = await api.getAccounts();
-    console.log(r)
-    if(r.payload && r.payload[0]) {
-      const first = r.payload[0]
-      // alert(JSON.stringify(first, null, 2))
-      store.account.set(first)
-    }
-    
-  }
 </script>
 
 <style>
