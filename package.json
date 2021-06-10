@@ -24,7 +24,7 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
-    "glow-js": "file:../glow/glow.js",
+    "@fognet/glow": "0.0.1",
     "glow.js": "^0.2.1",
     "sirv-cli": "^1.0.0"
   }

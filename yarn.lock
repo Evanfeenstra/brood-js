@@ -23,6 +23,13 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
+"@fognet/glow@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@fognet/glow/-/glow-0.0.1.tgz#4291a5888cdff39f01f354519a2294c09b8ddaf4"
+  integrity sha512-sfgnyHLwTT3xW0Gv2FXoJvGc62vZp02GBWYDfDB0WeCBq1g8lik2Rvh5SdSZsF23HFM9Sqs8bYm7s/HBTHpkag==
+  dependencies:
+    tslib "^2.1.0"
+
 "@polka/url@^1.0.0-next.9":
   version "1.0.0-next.11"
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.11.tgz#aeb16f50649a91af79dbe36574b66d0f9e4d9f71"
@@ -335,11 +342,6 @@ glob@^7.1.6:
     minimatch "^3.0.4"
     once "^1.3.0"
     path-is-absolute "^1.0.0"
-
-"glow-js@file:../glow/glow.js":
-  version "0.0.1"
-  dependencies:
-    tslib "^2.1.0"
 
 glow.js@^0.2.1:
   version "0.2.1"

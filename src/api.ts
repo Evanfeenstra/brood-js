@@ -1,2 +1,2 @@
-export * from 'glow-js'
+export * from '@fognet/glow'
 
